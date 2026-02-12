@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MINITEL - Coming Soon</title>
+    <title>Coming Soon</title>
     <style>
         * {
             margin: 0;
@@ -12,317 +12,75 @@
         }
 
         body {
-            background-color: #000000;
-            color: #FFFFFF;
+            background-color: #FFFFFF;
+            color: #000000;
             font-family: 'Courier New', Courier, monospace;
-            overflow-x: hidden;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            line-height: 1.2;
+            line-height: 1.6;
         }
 
-        .minitel-container {
-            max-width: 800px;
+        .container {
+            max-width: 600px;
             width: 100%;
-            border: 4px double #FFFFFF;
-            padding: 30px;
-            background-color: #000000;
-            box-shadow: 0 0 20px #FFFFFF, inset 0 0 20px #FFFFFF;
-        }
-
-        .header-bar {
-            border: 2px solid #FFFFFF;
-            padding: 15px;
             text-align: center;
-            margin-bottom: 30px;
-            background: repeating-linear-gradient(
-                0deg,
-                #000000,
-                #000000 2px,
-                #111111 2px,
-                #111111 4px
-            );
-            box-shadow: 0 0 10px #FFFFFF;
-        }
-
-        .header-bar h1 {
-            font-size: 2em;
-            letter-spacing: 8px;
-            text-shadow: 2px 2px 0 #FFFFFF;
-            animation: flicker 3s infinite alternate;
-        }
-
-        @keyframes flicker {
-            0%, 100% {
-                opacity: 1;
-                text-shadow: 2px 2px 0 #FFFFFF, 0 0 20px #FFFFFF;
-            }
-            50% {
-                opacity: 0.95;
-                text-shadow: 2px 2px 0 #FFFFFF, 0 0 10px #FFFFFF;
-            }
-        }
-
-        .ascii-border {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 0.8em;
-            letter-spacing: 2px;
-        }
-
-        .main-content {
-            border: 3px solid #FFFFFF;
-            padding: 40px 20px;
-            text-align: center;
-            margin: 20px 0;
-            position: relative;
-            background: 
-                linear-gradient(90deg, #FFFFFF 1px, transparent 1px),
-                linear-gradient(180deg, #FFFFFF 1px, transparent 1px);
-            background-size: 20px 20px;
-            background-position: center;
-            opacity: 0.98;
-        }
-
-        .main-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #000000;
-            z-index: 1;
-            opacity: 0.95;
-        }
-
-        .main-content > * {
-            position: relative;
-            z-index: 2;
         }
 
         .coming-soon {
-            font-size: 3.5em;
+            font-size: 3em;
             font-weight: bold;
-            margin: 30px 0;
-            letter-spacing: 6px;
-            text-shadow: 
-                3px 3px 0 #FFFFFF,
-                -1px -1px 0 #FFFFFF,
-                1px -1px 0 #FFFFFF,
-                -1px 1px 0 #FFFFFF,
-                0 0 30px #FFFFFF;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow: 
-                    3px 3px 0 #FFFFFF,
-                    -1px -1px 0 #FFFFFF,
-                    1px -1px 0 #FFFFFF,
-                    -1px 1px 0 #FFFFFF,
-                    0 0 30px #FFFFFF;
-            }
-            to {
-                text-shadow: 
-                    3px 3px 0 #FFFFFF,
-                    -1px -1px 0 #FFFFFF,
-                    1px -1px 0 #FFFFFF,
-                    -1px 1px 0 #FFFFFF,
-                    0 0 60px #FFFFFF,
-                    0 0 80px #FFFFFF;
-            }
-        }
-
-        .decorative-line {
-            margin: 20px 0;
-            font-size: 1em;
-            letter-spacing: 1px;
-            overflow: hidden;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
         }
 
         .info-box {
-            border: 2px solid #FFFFFF;
-            padding: 20px;
-            margin: 30px 0;
-            font-size: 1.1em;
-            letter-spacing: 3px;
-            line-height: 1.8;
-            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3);
-        }
-
-        .footer-section {
-            margin-top: 30px;
-            padding: 20px;
-            border-top: 3px double #FFFFFF;
-            border-bottom: 3px double #FFFFFF;
-            text-align: center;
-        }
-
-        .blinking-cursor {
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% {
-                opacity: 1;
-            }
-            51%, 100% {
-                opacity: 0;
-            }
-        }
-
-        .corner-decoration {
-            position: fixed;
-            font-size: 2em;
-            z-index: 0;
-            opacity: 0.3;
-            pointer-events: none;
-        }
-
-        .corner-tl {
-            top: 10px;
-            left: 10px;
-        }
-
-        .corner-tr {
-            top: 10px;
-            right: 10px;
-        }
-
-        .corner-bl {
-            bottom: 10px;
-            left: 10px;
-        }
-
-        .corner-br {
-            bottom: 10px;
-            right: 10px;
-        }
-
-        .pattern-row {
-            text-align: center;
-            margin: 10px 0;
-            font-size: 0.9em;
-            letter-spacing: 4px;
-            opacity: 0.8;
-        }
-
-        .menu-style {
-            display: inline-block;
-            margin: 5px 15px;
-            padding: 8px 15px;
-            border: 2px solid #FFFFFF;
-            letter-spacing: 3px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            font-size: 1em;
+            letter-spacing: 1px;
+            line-height: 1.5;
+            margin: 20px auto;
+            max-width: 100%;
+            word-wrap: break-word;
         }
 
         @media (max-width: 768px) {
             .coming-soon {
                 font-size: 2em;
+                letter-spacing: 2px;
             }
             
-            .header-bar h1 {
+            .info-box {
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .coming-soon {
                 font-size: 1.5em;
-                letter-spacing: 4px;
+                letter-spacing: 1px;
+            }
+            
+            .info-box {
+                font-size: 0.75em;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Corner decorations -->
-    <div class="corner-decoration corner-tl">╔═══</div>
-    <div class="corner-decoration corner-tr">═══╗</div>
-    <div class="corner-decoration corner-bl">╚═══</div>
-    <div class="corner-decoration corner-br">═══╝</div>
-
-    <div class="minitel-container">
-        <!-- Header -->
-        <div class="header-bar">
-            <h1>◆◆◆ MINITEL 3615 ◆◆◆</h1>
+    <div class="container">
+        <div class="coming-soon">
+            COMING SOON!
         </div>
-
-        <!-- ASCII Border -->
-        <div class="ascii-border">
-            ═══════════════════════════════════════════════════════════════
-        </div>
-
-        <!-- Decorative pattern -->
-        <div class="pattern-row">▓▓▒▒░░▓▓▒▒░░▓▓▒▒░░▓▓▒▒░░▓▓▒▒░░▓▓▒▒░░▓▓▒▒░░▓▓▒▒░░</div>
-
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="decorative-line">╔═══════════════════════════════════════════════════════════╗</div>
-            
-            <div class="coming-soon">
-                COMING SOON!
-            </div>
-            
-            <div class="decorative-line">╚═══════════════════════════════════════════════════════════╝</div>
-            
-            <div class="info-box">
-                ║ SYSTÈME EN COURS DE DÉVELOPPEMENT ║<br>
-                ║ SYSTEM UNDER DEVELOPMENT ║<br>
-                ║ █████████████████████████ ║
-            </div>
-
-            <div class="decorative-line">
-                ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-            </div>
-
-            <div style="margin-top: 30px;">
-                <div class="menu-style">[ ACCUEIL ]</div>
-                <div class="menu-style">[ SERVICES ]</div>
-                <div class="menu-style">[ CONTACT ]</div>
-            </div>
-
-            <div style="margin-top: 40px; font-size: 1.2em; letter-spacing: 2px;">
-                ╔════════════════════════════════════════════════╗<br>
-                ║  CONNEXION ÉTABLIE - CONNECTION ESTABLISHED  ║<br>
-                ║  VEUILLEZ PATIENTER - PLEASE WAIT            ║<br>
-                ║  ▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░ [Loading 35%]     ║<br>
-                ╚════════════════════════════════════════════════╝
-            </div>
-        </div>
-
-        <!-- Pattern -->
-        <div class="pattern-row">░░▒▒▓▓░░▒▒▓▓░░▒▒▓▓░░▒▒▓▓░░▒▒▓▓░░▒▒▓▓░░▒▒▓▓░░▒▒▓▓</div>
-
-        <!-- ASCII Border -->
-        <div class="ascii-border">
-            ═══════════════════════════════════════════════════════════════
-        </div>
-
-        <!-- Footer -->
-        <div class="footer-section">
-            <div style="margin: 10px 0; letter-spacing: 4px;">
-                ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-            </div>
-            <div style="font-size: 1.1em; letter-spacing: 3px; margin: 15px 0;">
-                ╔══════════════════════════════════════════╗<br>
-                ║  © 1980-2026 - MINITEL NETWORK          ║<br>
-                ║  FRANCE TÉLÉCOM - VIDÉOTEX SERVICE      ║<br>
-                ║  ▓▓▓ TRANSMISSION EN COURS ▓▓▓          ║<br>
-                ╚══════════════════════════════════════════╝
-            </div>
-            <div style="margin: 10px 0; letter-spacing: 4px;">
-                ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-            </div>
-            <div style="margin-top: 20px; font-size: 1.5em; letter-spacing: 5px;">
-                █ MINITEL █ 3615 █ ONLINE █<span class="blinking-cursor">_</span>
-            </div>
-        </div>
-
-        <!-- Bottom border -->
-        <div class="ascii-border" style="margin-top: 20px;">
-            ╔═══════════════════════════════════════════════════════════╗<br>
-            ║ TAPEZ [SUITE] POUR CONTINUER - PRESS [NEXT] TO CONTINUE ║<br>
-            ╚═══════════════════════════════════════════════════════════╝
+        
+        <div class="info-box">
+            ╔════════════════════════════════════════════════╗<br>
+            ║  CONNEXION ÉTABLIE - CONNECTION ESTABLISHED  ║<br>
+            ║  VEUILLEZ PATIENTER - PLEASE WAIT            ║<br>
+            ║  ▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░ [Loading 35%]     ║<br>
+            ╚════════════════════════════════════════════════╝
         </div>
     </div>
 </body>
